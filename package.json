@@ -1,0 +1,16 @@
+{
+  "name": "main_p",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "dev"
+  },
+  "keywords": [
+    "node",
+    "backend",
+    "javascript"
+  ],
+  "author": "gulu",
+  "license": "ISC",
+  "description": ""
+}
