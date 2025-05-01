@@ -2,8 +2,9 @@
   "name": "main_p",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "dev"
+    "dev": "nodemon src/index.js"
   },
   "keywords": [
     "node",
@@ -12,5 +13,8 @@
   ],
   "author": "gulu",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
 }
