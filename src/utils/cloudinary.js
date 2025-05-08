@@ -29,3 +29,5 @@ cloudinary.uploader.upload('https://res.cloudinary.com/demo/image/upload/getting
     function (error, result) {
         console.log(result);
     })
+
+export { uploadOnCloudinary };
