@@ -2,13 +2,6 @@ import mongoose from "mongoose";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 let userSchema = new mongoose.Schema({
-    id: {
-        type: String,
-        unique: true,
-        required: true,
-        lowercase: true,
-        trim: true,
-    },
     watchHistory: [
         {
             type: mongoose.Types.ObjectId,
@@ -17,18 +10,18 @@ let userSchema = new mongoose.Schema({
     ],
     username: {
         type: String,
-        unique: true,
         required: true,
+        unique: true,
         lowercase: true,
-        trim: true,
+        trim: true, 
         index: true
     },
     email: {
         type: String,
-        unique: true,
         required: true,
-        lowercase: true,
-        trim: true,
+        unique: true,
+        lowecase: true,
+        trim: true, 
     },
     fullName: {
         type: String,
@@ -70,7 +63,7 @@ userSchema.methods.isPasswordCorrect = async function (password) {
 userSchema.methods.generateAccessToken = function () {
     return jwt.sign(
         {
-            _id: this.id,
+            _id: this._id,
             email: this.email,
             username: this.username,
             fullName: this.fullName
@@ -84,7 +77,7 @@ userSchema.methods.generateAccessToken = function () {
 userSchema.methods.generateRefreshToken = function () {
     return jwt.sign(
         {
-            _id: this.id
+            _id: this._id
         },
         process.env.REFRESH_TOKEN_SECRET,
         {
