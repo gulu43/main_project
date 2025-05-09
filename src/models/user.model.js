@@ -1,25 +1,25 @@
-import mongoose, { Schema } from "mongoose";
+import mongoose from "mongoose";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
-let userSchema = new Schema({
+let userSchema = new mongoose.Schema({
     id: {
         type: String,
         unique: true,
         required: true,
-        lowecase: true,
+        lowercase: true,
         trim: true,
     },
     watchHistory: [
         {
-            typeof: mongoose.Schema.ObjectId,
-            ref: 'Video',
+            type: mongoose.Types.ObjectId,
+            ref: "Video",
         }
     ],
     username: {
         type: String,
         unique: true,
         required: true,
-        lowecase: true,
+        lowercase: true,
         trim: true,
         index: true
     },
@@ -27,7 +27,7 @@ let userSchema = new Schema({
         type: String,
         unique: true,
         required: true,
-        lowecase: true,
+        lowercase: true,
         trim: true,
     },
     fullName: {
@@ -52,7 +52,7 @@ let userSchema = new Schema({
         type: String,
     }
 
-}, { timestamps });
+}, { timestamps: true });
 
 userSchema.pre("save", async function (next) {
     if (this.isModified("password")) {
@@ -92,4 +92,4 @@ userSchema.methods.generateRefreshToken = function () {
         }
     )
 }
-export let User = mongoose.Schema('User', userSchema);
+export let User = mongoose.model('User', userSchema);
