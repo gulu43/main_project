@@ -3,8 +3,6 @@ import { ApiError } from "../utils/ApiError.js"
 import { User } from "../models/user.model.js";
 import { uploadOnCloudinary } from "../utils/cloudinary.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
-import { isValidElement } from "react";
-
 let generateAccessTokenAndRefreshToken = async(userId)=>{
     try {
         let user = await User.findById(userId)
