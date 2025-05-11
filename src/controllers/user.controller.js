@@ -90,7 +90,7 @@ export const registerUser = asyncHandler(async (req, res) => {
 export const loginUser = asyncHandler(async (req,res) => {
     const {username, email, password} = req.body
 
-    if ( !username || !email ) {
+    if ( !(username || email)) {
         throw new ApiError(400,"username or email is required!");
     }
     const user =  await User.findOne({
@@ -116,8 +116,8 @@ export const loginUser = asyncHandler(async (req,res) => {
     }
     return res.
     status(200)
-    .cookies("accessToken", accessToken, option)
-    .cookies("refreshToken", refreshToken, option)
+    .cookie("accessToken", accessToken, option)
+    .cookie("refreshToken", refreshToken, option)
     .json(
         new ApiResponse(
             200,
